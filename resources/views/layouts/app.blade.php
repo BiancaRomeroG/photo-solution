@@ -20,9 +20,20 @@
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
 
-
     <!-- Scripts -->
     <script src="{{ secure_asset('js/app.js') }}" defer></script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon">
+    <!-- Custom styles -->
+    <!-- <link rel="stylesheet" href="./css/style.min.css"> -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- Chart library -->
+    <script src="./plugins/chart.min.js"></script>
+    <!-- Icons library -->
+    <script src="plugins/feather.min.js"></script>
+    <!-- Custom scripts -->
+    <script src="js/script.js"></script>
 </head>
 
 <body class="font-sans antialiased">
@@ -34,7 +45,7 @@
         <!-- Page Heading -->
         @if (isset($header))
             <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
             </header>
