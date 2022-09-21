@@ -15,6 +15,10 @@ class CreateFotografiasTable extends Migration
     {
         Schema::create('fotografias', function (Blueprint $table) {
             $table->id();
+            $table->string('direccion_img');
+            $table->string('precio');
+            $table->unsignedBigInteger('id_catalogo');
+            $table->foreign('id_catalogo')->references('id')->on('catalogos');
             $table->timestamps();
         });
     }

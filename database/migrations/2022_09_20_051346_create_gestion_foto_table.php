@@ -15,6 +15,10 @@ class CreateGestionFotoTable extends Migration
     {
         Schema::create('gestion_foto', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_fotografia');
+            $table->foreign('id_fotografia')->references('id')->on('fotografias');
+            $table->unsignedBigInteger('id_cliente');
+            $table->foreign('id_cliente')->references('id')->on('clientes');
             $table->timestamps();
         });
     }

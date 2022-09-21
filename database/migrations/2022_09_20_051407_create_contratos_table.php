@@ -15,6 +15,13 @@ class CreateContratosTable extends Migration
     {
         Schema::create('contratos', function (Blueprint $table) {
             $table->id();
+            $table->string('cantidad_fotos');
+            $table->date('fecha');
+            $table->string('pago');
+            $table->unsignedBigInteger('id_fotografo');
+            $table->foreign('id_fotografo')->references('id')->on('fotografos');
+            $table->unsignedBigInteger('id_organizador');
+            $table->foreign('id_organizador')->references('id')->on('organizadores');
             $table->timestamps();
         });
     }

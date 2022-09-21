@@ -15,6 +15,15 @@ class CreateEventosTable extends Migration
     {
         Schema::create('eventos', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre_evento');
+            $table->string('direccion');
+            $table->date('fecha');
+            $table->time('hora');
+            $table->string('paquete_fotos');
+            $table->unsignedBigInteger('id_fotografo');
+            $table->foreign('id_fotografo')->references('id')->on('fotografos');
+            $table->unsignedBigInteger('id_organizador');
+            $table->foreign('id_organizador')->references('id')->on('organizadores');
             $table->timestamps();
         });
     }

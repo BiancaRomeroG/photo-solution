@@ -15,6 +15,7 @@ class CreateQrCodeTable extends Migration
     {
         Schema::create('qr_code', function (Blueprint $table) {
             $table->id();
+            $table->string('imagen');
             $table->timestamps();
         });
     }
