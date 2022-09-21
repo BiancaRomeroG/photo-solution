@@ -373,7 +373,7 @@
 
                             </ul>
                             <div class="btn-wrap">
-                                <a href="#" class="btn-buy">Comprar</a>
+                                <a href="{{route('register-fotografo')}}" class="btn-buy">Comprar</a>
                             </div>
                         </div>
                     </div>
@@ -390,7 +390,7 @@
                                 <li>Actualizaciones</li>
                             </ul>
                             <div class="btn-wrap">
-                                <a href="#" class="btn-buy">Comprar</a>
+                                <a href="{{route('register-fotografo')}}" class="btn-buy">Comprar</a>
                             </div>
                         </div>
                     </div>
@@ -407,7 +407,7 @@
                                 <li>Actualizaciones</li>
                             </ul>
                             <div class="btn-wrap">
-                                <a href="#" class="btn-buy">Comprar</a>
+                                <a href="{{route('register-fotografo')}}" class="btn-buy">Comprar</a>
                             </div>
                         </div>
                     </div>

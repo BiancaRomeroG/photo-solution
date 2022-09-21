@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PagoController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/register-fotografo',[RegisterController::class,'create'])->name('register-fotografo');
+Route::post('/register-fotografo',[RegisterController::class,'store'])->name('fotografo.store');
+
+Route::get('/pago-register',[PagoController::class,'index'])->name('pago.index');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -26,3 +33,4 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+

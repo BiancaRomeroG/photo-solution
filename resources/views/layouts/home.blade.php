@@ -132,10 +132,12 @@
                             </button>
                             <ul class="users-item-dropdown nav-user-dropdown dropdown">
                                 <li>
-                                    <a href="##">
-                                        <i data-feather="user" aria-hidden="true"></i>
-                                        <span>Perfil</span>
-                                    </a>
+                                    <form action="{{route('profile.show')}}" method="GET" name="profilebutton">
+                                        <a onclick="profile()">
+                                            <i data-feather="user" aria-hidden="true"></i>
+                                            <span>Perfil</span>
+                                        </a>
+                                    </form>
                                 </li>
                                 <li>
                                     <form action="{{ route('logout') }}" method="POST" name="submitbutton"> @csrf
@@ -175,6 +177,12 @@
             submitbutton.submit();
         }
     </script>
+
+<script>
+    function profile(){
+        profilebutton.submit();
+    }
+</script>
 </body>
 
 </html>

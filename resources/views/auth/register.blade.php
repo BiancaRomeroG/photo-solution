@@ -9,6 +9,8 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
             
+            <input type="hidden" value="cliente" name="tipo">
+            
             <div class="flex mt-4">
                 <div class="mr-1">
                     <x-jet-label for="name" value="{{ __('Nombre') }}" />

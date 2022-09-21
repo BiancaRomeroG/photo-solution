@@ -12,5 +12,6 @@ class Fotografo extends Model
     protected $table = 'fotografos';
     protected $fillable = [
         'id_usuario',
+        'nombre_studio'
     ];
 }
