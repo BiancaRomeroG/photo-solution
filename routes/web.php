@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FotografoController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -19,18 +20,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register-fotografo',[RegisterController::class,'create'])->name('register-fotografo');
-Route::post('/register-fotografo',[RegisterController::class,'store'])->name('fotografo.store');
+Route::get('/register-fotografo', [RegisterController::class, 'create'])->name('register-fotografo');
+Route::post('/register-fotografo', [RegisterController::class, 'store'])->name('fotografo.store');
 
-Route::get('/pago-register',[PagoController::class,'index'])->name('pago.index');
+
 
 Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
+    'auth:sanctum', config('jetstream.auth_session'), 'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-});
 
+    Route::get('/pago-register', [PagoController::class, 'index'])->name('pago.index');
+    Route::get('/card-fotografo', [FotografoController::class, 'index'])->name('fotografo.index');
+});

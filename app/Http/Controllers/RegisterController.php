@@ -18,11 +18,12 @@ class RegisterController extends Controller
         $this->guard = $guard;
     }
 
-    public function store(Request $request,CreatesNewUsers $create):RegisterResponse
+    public function store(Request $request,CreatesNewUsers $create)
     {
         event(new Registered($user = $create->create($request->all())));
         $this->guard->login($user);
-        return app(RegisterResponse::class);
+        // return app(RegisterResponse::class);
+        return view('layouts.pago');
     }
 
     public function create(){

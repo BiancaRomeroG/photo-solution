@@ -6,8 +6,13 @@
 
         <x-jet-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('fotografo.store') }}">
+        <form method="POST" action="{{ route('fotografo.store') }}" enctype="multipart/form-data">
             @csrf
+
+            <div class="form-group row">
+                <x-jet-label for="photo" value="{{ __('Foto de perfil') }}" />
+                <x-jet-input id="photo" class="block w-full mt-1" type="file" name="photo" :value="old('photo')"/>
+            </div>
 
             <div class="flex mt-4">
                 <div class="mr-1">
@@ -62,46 +67,26 @@
                     name="password_confirmation" required autocomplete="new-password" />
             </div>
 
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms" />
 
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                    'terms_of_service' =>
-                                        '<a target="_blank" href="' .
-                                        route('terms.show') .
-                                        '" class="text-sm text-gray-600 underline hover:text-gray-900">' .
-                                        __('Terms of Service') .
-                                        '</a>',
-                                    'privacy_policy' =>
-                                        '<a target="_blank" href="' .
-                                        route('policy.show') .
-                                        '" class="text-sm text-gray-600 underline hover:text-gray-900">' .
-                                        __('Privacy Policy') .
-                                        '</a>',
-                                ]) !!}
-                            </div>
-                        </div>
-                    </x-jet-label>
-                </div>
-            @endif
 
             <div class="flex items-center justify-end mt-4">
                 <a class="text-sm text-gray-600 underline hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Ya estas registrado?') }}
                 </a>
-                
-                <div class="ml-4">
-                    <a href="{{route('pago.index')}}" class='inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition bg-gray-800 border border-transparent rounded-md hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25' role="button" aria-pressed="true">
-                        Siguiente
-                    </a>
-                </div>
 
 
-                
+                    <x-jet-button class="ml-4">
+                        {{ __('Registrar') }}
+                    </x-jet-button>
+
+
+
+                {{-- <a href="{{ route('pago.index') }}">
+                    <button class="ml-4">
+                        Registrar
+                    </button>
+                </a> --}}
+
             </div>
         </form>
     </x-jet-authentication-card>

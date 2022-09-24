@@ -41,12 +41,12 @@
                 <div class="sidebar-body">
                     <ul class="sidebar-body-menu">
                         <li>
-                            <a class="active" href="/"><span class="icon home"
-                                    aria-hidden="true"></span>Home</a>
+                            <a class="active" href="/dashboard"><span class="icon home"
+                                    aria-hidden="true" role="button"></span>Home</a>
                         </li>
                         <li>
-                            <a class="show-cat-btn" href="##">
-                                <span class="icon document" aria-hidden="true"></span>Calendario
+                            <a class="show-cat-btn" href="{{route('fotografo.index')}}">
+                                <span class="icon document" aria-hidden="true" role="button"></span>Fotografos
                             </a>
                         </li>
                         <li>

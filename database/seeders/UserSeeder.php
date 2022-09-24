@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'telefono' => '79080600',
             'email' => 'mario@gmail.com',
             'password' => bcrypt('12345678')
-    ]);
+    ])->assignRole('Fotografo');
 
     $user = User::create([
             'name' => 'Mariela',
@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             'telefono' => '79080601',
             'email' => 'mariela@gmail.com',
             'password' => bcrypt('12345678')
-    ]);
+    ])->assignRole('Fotografo');
 
     $user = User::create([
             'name' => 'Laura',
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
             'telefono' => '79080602',
             'email' => 'laura@gmail.com',
             'password' => bcrypt('12345678')
-    ]);
+    ])->assignRole('Fotografo');
 
     $user = User::create([
             'name' => 'Kevin',
@@ -48,7 +48,7 @@ class UserSeeder extends Seeder
             'telefono' => '79080603',
             'email' => 'kevin@gmail.com',
             'password' => bcrypt('12345678')
-    ]);
+    ])->assignRole('Fotografo');
 
     $user = User::create([
             'name' => 'Julia',
@@ -57,7 +57,7 @@ class UserSeeder extends Seeder
             'telefono' => '79080604',
             'email' => 'julia@gmail.com',
             'password' => bcrypt('12345678')
-    ]);
+    ])->assignRole('Fotografo');
 
     $user = User::create([
             'name' => 'Juan',
@@ -66,7 +66,7 @@ class UserSeeder extends Seeder
             'telefono' => '79080605',
             'email' => 'juan@gmail.com',
             'password' => bcrypt('12345678')
-    ]);
+    ])->assignRole('Fotografo');
 
     $user = User::create([
             'name' => 'Raul',

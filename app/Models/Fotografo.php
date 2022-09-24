@@ -14,4 +14,8 @@ class Fotografo extends Model
         'id_usuario',
         'nombre_studio'
     ];
+
+    public function user(){
+        return $this->belongsTo('App\Models\User', 'id_usuario', 'id');
+    }
 }

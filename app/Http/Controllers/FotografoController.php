@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Fotografo;
 use Illuminate\Http\Request;
 
 class FotografoController extends Controller
@@ -13,7 +13,8 @@ class FotografoController extends Controller
      */
     public function index()
     {
-        //
+        $fotografos = Fotografo::all();
+        return view('fotografo.show',compact('fotografos'));
     }
 
     /**
@@ -45,7 +46,7 @@ class FotografoController extends Controller
      */
     public function show($id)
     {
-        //
+       //
     }
 
     /**
