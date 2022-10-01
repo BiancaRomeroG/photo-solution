@@ -13,4 +13,8 @@ class Cliente extends Model
     protected $fillable = [
         'id_usuario',
     ];
+
+    public function user(){
+        return $this->belongsTo('App\Models\User', 'id_usuario', 'id');
+    }
 }

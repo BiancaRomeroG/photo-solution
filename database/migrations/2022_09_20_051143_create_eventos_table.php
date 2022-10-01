@@ -19,11 +19,13 @@ class CreateEventosTable extends Migration
             $table->string('direccion');
             $table->date('fecha');
             $table->time('hora');
-            $table->string('paquete_fotos');
+            $table->string('estado')->nullable();
             $table->unsignedBigInteger('id_fotografo');
             $table->foreign('id_fotografo')->references('id')->on('fotografos');
             $table->unsignedBigInteger('id_organizador');
             $table->foreign('id_organizador')->references('id')->on('organizadores');
+            $table->unsignedBigInteger('id_paquete')->nullable();
+            $table->foreign('id_paquete')->references('id')->on('paquetes');
             $table->timestamps();
         });
     }

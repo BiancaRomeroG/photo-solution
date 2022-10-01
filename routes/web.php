@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\EventoController;
 use App\Http\Controllers\FotografoController;
 use App\Http\Controllers\PagoController;
+use App\Http\Controllers\PaqueteController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,8 +24,12 @@ Route::get('/', function () {
 
 Route::get('/register-fotografo', [RegisterController::class, 'create'])->name('register-fotografo');
 Route::post('/register-fotografo', [RegisterController::class, 'store'])->name('fotografo.store');
+Route::get('/evento', [EventoController::class, 'index'])->name('evento.index');
+Route::get('/eventocreate/{id}', [EventoController::class, 'create'])->name('evento.create');
+Route::post('/eventostore/{id}', [EventoController::class, 'storeevento'])->name('evento.storeevento');
 
-
+Route::get('/paquetes',[PaqueteController::class,'index'])->name('paquetes.index');
+Route::get('/paquetescreate',[PaqueteController::class,'create'])->name('paquetes.create');
 
 Route::middleware([
     'auth:sanctum', config('jetstream.auth_session'), 'verified'

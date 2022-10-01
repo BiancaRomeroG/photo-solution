@@ -15,9 +15,19 @@ class Evento extends Model
         'direccion',
         'fecha',
         'hora',
-        'paquete_fotos',
+        'estado',
         'id_fotografo',
         'id_organizador',
+        'id_paquete',
     ];
+
+
+    public function fotografo(){
+        return $this->belongsTo('App\Models\Fotografo','id_fotografo','id');
+    }
+
+    public function organizador(){
+        return $this->belongsTo('App\Models\Organizador','id_organizador','id');
+    }
 
 }

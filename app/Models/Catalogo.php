@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Catalogo extends Model
 {
     use HasFactory;
+    protected $table = 'catalogos';
+    protected $fillable = [
+        'cantidad_fotos',
+        'id_evento',
+        'id_qr',
+    ];
 }

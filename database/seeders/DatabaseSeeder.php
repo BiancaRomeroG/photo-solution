@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call(FotografosSeeder::class);
         $this->call(ClientesSeeder::class);
         $this->call(OrganizadoresSeeder::class);
+        $this->call(PaquetesSeeder::class);
         $this->call(EventosSeeder::class);
         $this->call(ContratosSeeder::class);
+        
     }
 }
