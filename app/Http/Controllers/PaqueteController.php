@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Paquetes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PaqueteController extends Controller
 {
@@ -14,7 +15,8 @@ class PaqueteController extends Controller
      */
     public function index()
     {
-        return view('paquetes.index');
+        $paquetes = Paquetes::all();
+        return view('paquetes.index', compact('paquetes'));
     }
 
     /**
@@ -25,7 +27,7 @@ class PaqueteController extends Controller
     public function create()
     {
         
-        return view('');
+        return view('paquetes.create');
     }
 
     /**
@@ -36,9 +38,14 @@ class PaqueteController extends Controller
      */
     public function store(Request $request)
     {
-        Paquetes::create([
+        $paquetes = Paquetes::create([
             'id_fotografo' =>auth()->user()->id,
+            'nombre'=> $request->nombre,
+            'precio' => $request->precio,
+            'cantidad_fotos' => $request->cantidad_fotos,
+            'descripcion' => $request->descripcion,
         ]);
+        $paquetes->save();
 
         return redirect()->route('paquetes.index');
     }
@@ -46,18 +53,19 @@ class PaqueteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Paquetes $paquetes
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($paquetes)
     {
-        //
+        $paquetes = Paquetes::findOrFail($paquetes);
+        return view('paquetes.show');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Paquetes $paquetes
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -69,7 +77,7 @@ class PaqueteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Paquetes $paquetes
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -80,7 +88,7 @@ class PaqueteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Paquetes $paquetes
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

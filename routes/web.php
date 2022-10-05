@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CatalogoController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\FotografoController;
 use App\Http\Controllers\PagoController;
@@ -28,8 +29,10 @@ Route::get('/evento', [EventoController::class, 'index'])->name('evento.index');
 Route::get('/eventocreate/{id}', [EventoController::class, 'create'])->name('evento.create');
 Route::post('/eventostore/{id}', [EventoController::class, 'storeevento'])->name('evento.storeevento');
 
+Route::get('catalogo',[CatalogoController::class,'index'])->name('catalogo.index');
+
 Route::get('/paquetes',[PaqueteController::class,'index'])->name('paquetes.index');
-Route::get('/paquetescreate',[PaqueteController::class,'create'])->name('paquetes.create');
+Route::post('/paquetescreate',[PaqueteController::class,'create'])->name('paquetes.create');
 
 Route::middleware([
     'auth:sanctum', config('jetstream.auth_session'), 'verified'

@@ -31,6 +31,7 @@ class EventoController extends Controller
             'evento.id_organizador',
         )->OrderBy('evento.updated_at','DESC')->get();
         return view('evento.index', compact('fotografo','organizador'))->with('i');
+        // return view('evento.index', compact('evento'));
     }
 
     /**
@@ -98,8 +99,9 @@ class EventoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
+       
         //
     }
 

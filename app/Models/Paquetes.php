@@ -17,4 +17,10 @@ class Paquetes extends Model
         'descripcion',
         'id_fotografo',
     ];
+
+    public function fotografo(){
+        return $this->belongsTo('App\Models\Fotografo','id_fotografo','id');
+    }
+
+
 }
