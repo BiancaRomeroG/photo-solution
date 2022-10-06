@@ -5,7 +5,7 @@
 <div class="mx-auto col-sm-12 col-xl-6">
     <div class="p-4 my-5 rounded bg-light h-100">
         <h6 class="mb-4">Paquetes</h6>
-        <form  method="POST" action="{{route('paquetes.create')}}"  >
+        <form  method="POST" action="{{route('paquete.store')}}"  >
             @csrf
             <div class="mb-3">
                 <label class="form-label">Nombre</label>

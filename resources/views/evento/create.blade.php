@@ -1,5 +1,5 @@
 @extends('layouts.banner')
-@section('title', 'banner')
+@section('title', 'evento')
 
 @section('main')
 <div class="mx-auto col-sm-12 col-xl-6">
@@ -23,6 +23,15 @@
             <div class="mb-3">
                 <label  class="form-label">Hora</label>
                 <input type="time" class="form-control" id="hora" name="hora">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Paquete:</label>
+                <select class="mb-3 form-select" aria-label="Default select example" id="tipo">
+                    <option selected>---Escoja una opcion---</option>
+                    <option value="1">Basic</option>
+                    <option value="2">Estandar</option>
+                    <option value="3">Premiun</option>
+                </select>
             </div>
             
             <div class="gap-2 d-grid d-md-flex justify-content-md-end">

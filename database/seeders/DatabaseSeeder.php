@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PaquetesSeeder::class);
         $this->call(EventosSeeder::class);
         $this->call(ContratosSeeder::class);
-        $this->call(PaquetesSeeder::class);
         
     }
 }

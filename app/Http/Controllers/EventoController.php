@@ -20,18 +20,10 @@ class EventoController extends Controller
      */
     public function index()
     {
-        $evento = Evento::join('catalogo','catalogo.id','catalogo.id_evento')
-        ->select(
-            'evento.id',
-            'evento.nombre_evento',
-            'evento.direccion',
-            'evento.fecha',
-            'evento.hora',
-            'evento.id_fotografo',
-            'evento.id_organizador',
-        )->OrderBy('evento.updated_at','DESC')->get();
-        return view('evento.index', compact('fotografo','organizador'))->with('i');
-        // return view('evento.index', compact('evento'));
+        $eventos = Evento::all();
+        // return $eventos;
+        return view('evento.index', compact('eventos'))->with('i');
+        // return view('evento.index');
     }
 
     /**

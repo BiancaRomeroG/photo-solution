@@ -58,9 +58,9 @@
                                 class="fa fa-laptop me-2"></i>Fotografos</a>
                     </div>
                     <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Mis Eventos</a>
-                    <a href="{{route('paquetes.index')}}" class="nav-item nav-link"><i class="bi bi-folder-fill me-2"></i>Mis Paquetes</a>
-                    <a href="form.html" class="nav-item nav-link"><i class="bi bi-camera-fill me-2"></i>Catalogo</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="bi bi-credit-card-2-back-fill me-2"></i>Planes de Pago</a>
+                    <a href="#" class="nav-item nav-link"><i class="bi bi-folder-fill me-2"></i>Mis Paquetes</a>
+                    <a href="{{route('catalogo.index')}}" class="nav-item nav-link"><i class="bi bi-camera-fill me-2"></i>Catalogo</a>
+                    
                 </div>
             </nav>
         </div>
@@ -125,7 +125,7 @@
 
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+       
     </div>
 
     <!-- JavaScript Libraries -->

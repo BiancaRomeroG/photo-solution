@@ -23,15 +23,15 @@
                             <h4 class="text-dark" class="card-title">Paquetes</h4>
                         </div>
                         <div class="col-6 col-md-auto col-sm-6">
-                            <a href="{{ route('paquetes.create') }}" class="btn btn-sm btn-dark">Agregar nuevo Paquete</a>
+                            <a href="{{ route('paquete.create') }}" class="btn btn-sm btn-dark">Agregar nuevo Paquete</a>
                         </div>
                         @foreach ($paquetes as $paquete)
                             <div class="container-card2">
                                 <div class="contenido-card">
-                                    <h3>{{ $paquetes->nombre }}</h3>
-                                    <p>Precio: {{ $paquetes->precio }}</p>
-                                    <p>Cantidad de Fotos: {{ $paquetes->cantidad_fotos }}</p>
-                                    <p>Descripcion: {{ $paquetes->descripcion }}</p>
+                                    <h3>{{ $paquete->nombre}}</h3>
+                                    <p>Precio: {{ $paquete->precio }}</p>
+                                    <p>Cantidad de Fotos: {{ $paquete->cantidad_fotos }}</p>
+                                    <p>Descripcion: {{ $paquete->descripcion }}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
 
 
