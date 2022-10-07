@@ -58,7 +58,7 @@
                                 class="fa fa-laptop me-2"></i>Fotografos</a>
                     </div>
                     <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Mis Eventos</a>
-                    <a href="#" class="nav-item nav-link"><i class="bi bi-folder-fill me-2"></i>Mis Paquetes</a>
+                    <a href="{{route('paqueteshow')}}" class="nav-item nav-link"><i class="bi bi-folder-fill me-2"></i>Mis Paquetes</a>
                     <a href="{{route('catalogo.index')}}" class="nav-item nav-link"><i class="bi bi-camera-fill me-2"></i>Catalogo</a>
                     
                 </div>

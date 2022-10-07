@@ -8,6 +8,7 @@
         <form  method="POST" action="{{route('paquete.store')}}"  >
             @csrf
             <div class="mb-3">
+                <input type="hidden" value="{{$fotografo->id}}" name="idfotografo">
                 <label class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombre"
                     aria-describedby="emailHelp" name="nombre">
@@ -30,6 +31,5 @@
         </form>
     </div>
 </div>
-
 @endsection
 

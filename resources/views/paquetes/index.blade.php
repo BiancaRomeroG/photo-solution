@@ -25,21 +25,23 @@
                         <div class="col-6 col-md-auto col-sm-6">
                             <a href="{{ route('paquete.create') }}" class="btn btn-sm btn-dark">Agregar nuevo Paquete</a>
                         </div>
-                        @foreach ($paquetes as $paquete)
-                            <div class="container-card2">
-                                <div class="contenido-card">
-                                    <h3>{{ $paquete->nombre}}</h3>
-                                    <p>Precio: {{ $paquete->precio }}</p>
-                                    <p>Cantidad de Fotos: {{ $paquete->cantidad_fotos }}</p>
-                                    <p>Descripcion: {{ $paquete->descripcion }}</p>
+                        <div class="container-card2">
+                            @foreach ($paquetes as $paquete)
+                                <div class="card2">
+                                    <div class="contenido-card2">
+                                        <h3 class="text-white bg-danger">{{ $paquete->nombre }}</h3>
+                                        <p>Precio: {{ $paquete->precio }}</p>
+                                        <p>Cantidad de Fotos: {{ $paquete->cantidad_fotos }}</p>
+                                        <p>Descripcion: {{ $paquete->descripcion }}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 
 
 

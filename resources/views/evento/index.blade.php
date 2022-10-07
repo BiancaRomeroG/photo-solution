@@ -2,7 +2,7 @@
 @section('title', 'banner')
 
 @section('main')
-    <div class="px-2 container-fluid px-md-3">
+    <div class="px-2 my-3 container-fluid px-md-5">
         <div class="card">
             <div class="p-4 pb-2 card-header">
                 <div class="row justify-content-between">
@@ -11,77 +11,92 @@
                     </div>
                     <div class="col-6 col-md-auto col-sm-6">
                         {{-- @can('Crear areas') --}}
-                        <a href="{{route('fotografo.index')}}" class="btn btn-sm btn-dark">Agregar nuevo evento</a>
+                        <a href="{{ route('fotografo.index') }}" class="btn btn-sm btn-dark">Agregar nuevo evento</a>
                         {{-- @endcan --}}
                     </div>
                 </div>
             </div>
             <hr class="m-0">
-            <div class="card-body">
-                <div class="bg-gray-100 shadow-lg card">
+            <div class="col-12">
+                <div class="p-4 rounded bg-light h-100">
                     <div class="table-responsive">
-                        <table class="table mb-0 align-items-center" id="tabla">
+                        <table class="table">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nº
-                                    </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Nombre del Evento</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Direccion</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Fecha</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Hora</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Opciones</th>
+                                    <th scope="col">Nº</th>
+                                    <th scope="col">Nombre del Evento</th>
+                                    <th scope="col">Direccion</th>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Hora</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col">Opciones</th>
                                 </tr>
                             </thead>
-                        <tbody>
-                            @foreach ($eventos as $evento )
-                            <tr>
-                                <td class="text-center align-center">
-                                    <div class="px-2 py-1 d-flex">
-                                        <span
-                                            class="text-xs text-secondary font-weight-normal">1</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="px-2 py-1 d-flex">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h4 class="mb-0 text-xs">{{ $evento->nombre_evento }}
-                                            </h4>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="px-2 py-1 d-flex">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h4 class="mb-0 text-xs">{{ $evento->direccion }}
-                                            </h4>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="px-2 py-1 d-flex">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h4 class="mb-0 text-xs">{{ $evento->fecha }}
-                                            </h4>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="px-2 py-1 d-flex">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h4 class="mb-0 text-xs">{{ $evento->hora }}
-                                            </h4>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
+                            <tbody>
+                                @foreach ($eventos as $evento)
+                                    <tr>
+                                        <td class="text-center align-center">
+                                            <div class="px-2 py-1 d-flex">
+                                                <span>&nbsp;&nbsp;{{ ++$i }}</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="px-2 py-1 d-flex">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <span scope="col">{{ $evento->nombre_evento }}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="px-2 py-1 d-flex">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <span scope="col">{{ $evento->direccion }}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="px-2 py-1 d-flex">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <span scope="col">{{ $evento->fecha }}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="px-2 py-1 d-flex">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <span scope="col">{{ $evento->hora }}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            @if ($evento->estado == 'En proceso')
+                                                <span class="badge"
+                                                    style="background-color: rgb(255, 68, 0)">{{ $evento->estado }}</span>
+                                            @endif
+                                            @if ($evento->estado == 'Sin pagar')
+                                            <span class="badge"
+                                                    style="background-color: rgb(187, 210, 13)">{{ $evento->estado }}</span>
+                                            @endif
+                                            @if ($evento->estado == 'Pagado')
+                                            <span class="badge"
+                                                    style="background-color: rgb(5, 185, 74)">{{ $evento->estado }}</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <button class="m-auto btn btn-icon btn-sm btn-secondary" type="button">
+                                                <span class="material-icons"><i
+                                                        class="bi bi-images me-2"></i>Catalogo</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <!-- Table End -->
 
-            @endsection
+@endsection

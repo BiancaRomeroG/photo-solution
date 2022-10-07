@@ -32,7 +32,7 @@
                     <p>Carnet de identidad: {{ $fotografo->user->ci }}</p>
                     <p>Foto Estudio: {{ $fotografo->nombre_studio }}</p>
                     <a href="{{route('evento.create', $fotografo->id)}}">Reservar</a>
-                    <a href="{{route('paquete.index', $fotografo->id)}}">Ver Paquetes</a>
+                    <a href="{{route('paquete.show', $fotografo->id)}}">Ver Paquetes</a>
                 </div>
             </div>
         @endforeach

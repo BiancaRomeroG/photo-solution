@@ -5,6 +5,7 @@ use App\Http\Controllers\EventoController;
 use App\Http\Controllers\FotografoController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PaqueteController;
+use App\Http\Controllers\PaqueteShowController;
 use App\Http\Controllers\QrController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -31,11 +32,9 @@ Route::get('/eventocreate/{id}', [EventoController::class, 'create'])->name('eve
 Route::post('/eventostore/{id}', [EventoController::class, 'storeevento'])->name('evento.storeevento');
 
 Route::get('catalogo',[CatalogoController::class,'index'])->name('catalogo.index');
-Route::get('/paquetes/{id}',[PaqueteController::class,'index'])->name('paquete.index');
-Route::resource('paquete',PaqueteController::class)->except([
-    'index'
-]);
 
+Route::resource('paquete',PaqueteController::class);
+Route::get('/paqueteshow',[PaqueteShowController::class,'show'])->name('paqueteshow');
 Route::middleware([
     'auth:sanctum', config('jetstream.auth_session'), 'verified'
 ])->group(function () {
