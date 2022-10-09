@@ -9,6 +9,7 @@ use App\Http\Controllers\PaqueteController;
 use App\Http\Controllers\PaqueteShowController;
 use App\Http\Controllers\QrController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,24 +26,28 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/register-fotografo', [RegisterController::class, 'create'])->name('register-fotografo');
+Route::post('/register-fotografo', [RegisterController::class, 'store'])->name('fotografo.store');
+Route::get('/pago-register', [PagoController::class, 'index'])->name('pago.index');
 
 
-Route::middleware([
-    'auth:sanctum', config('jetstream.auth_session'), 'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+Route::group(['middleware'=> 'disable_back'],function(){
+    Route::middleware([
+        'auth:sanctum', config('jetstream.auth_session'), 'verified'
+    ])->group(function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+       
+        Route::get('/card-fotografo', [FotografoController::class, 'index'])->name('fotografo.index');
 
-    Route::get('/pago-register', [PagoController::class, 'index'])->name('pago.index');
-    Route::get('/card-fotografo', [FotografoController::class, 'index'])->name('fotografo.index');
-    Route::get('/register-fotografo', [RegisterController::class, 'create'])->name('register-fotografo');
-    Route::post('/register-fotografo', [RegisterController::class, 'store'])->name('fotografo.store');
-    Route::get('/evento', [EventoController::class, 'index'])->name('evento.index');
-    Route::get('/eventocreate/{id}', [EventoController::class, 'create'])->name('evento.create');
-    Route::post('/eventostore/{id}', [EventoController::class, 'storeevento'])->name('evento.storeevento');
-    Route::get('/catalogo/{id}', [CatalogoController::class, 'show'])->name('catalogo.show');
-    Route::resource('paquete', PaqueteController::class);
-    Route::get('/paqueteshow', [PaqueteShowController::class, 'show'])->name('paqueteshow');
-    Route::resource('fotografia', FotografiaController::class);
+        Route::get('/evento', [EventoController::class, 'index'])->name('evento.index');
+        Route::get('/eventocreate/{id}', [EventoController::class, 'create'])->name('evento.create');
+        Route::post('/eventostore/{id}', [EventoController::class, 'storeevento'])->name('evento.storeevento');
+        Route::get('/catalogo/{id}', [CatalogoController::class, 'show'])->name('catalogo.show');
+        Route::resource('paquete', PaqueteController::class);
+        Route::get('/paqueteshow', [PaqueteShowController::class, 'show'])->name('paqueteshow');
+        Route::resource('fotografia', FotografiaController::class);
+        Route::post('/profilephoto',[UserController::class,'update_photo'])->name('profile.update_photo');
+    });
 });

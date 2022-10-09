@@ -32,8 +32,8 @@
                                 </div>
                                 <div class="px-6 my-5 mb-10">
                                     <div class="gap-2 mx-auto d-grid col-6">
-                                    <button class="btn btn-secondary" type="button" id="download_qr">Guardar</button>
-                                </div>
+                                        <button class="btn btn-secondary" type="button" id="download_qr">Guardar</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -68,43 +68,49 @@
                             </div>
                         </div>
 
-                        <form action="{{ route('fotografia.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <input type="hidden" value="{{ $catalogo->id }}" name="catalogo">
-                            <div class="my-3 col-12 col-xl-12">
-                                <div class="card card-plain h-100">
-                                    <div class="p-3 pb-0 card-header">
-                                        <div class="row">
-                                            <div class="col-md-8 d-flex align-items-center">
-                                                <h6 class="mb-0 text-danger">Subir Imagenes al Catalogo</h6>
+                        <div>
+                            @role('Fotografo')
+                                <form action="{{ route('fotografia.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" value="{{ $catalogo->id }}" name="catalogo">
+                                    <div class="my-3 col-12 col-xl-12">
+                                        <div class="card card-plain h-100">
+                                            <div class="p-3 pb-0 card-header">
+                                                <div class="row">
+                                                    <div class="col-md-8 d-flex align-items-center">
+                                                        <h6 class="mb-0 text-danger">Subir Imagenes al Catalogo</h6>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="p-3 card-body">
-                                        <input class="form-control" type="file" id="formFile" name="file[]" multiple>
-                                        <div class="row" style="margin-top:2px;">
-                                            <div class="col-xs-4 col-sm-4 col-md-4">
-                                                <label for="precio" class="col-sm-2 col-form-label">Precio</label>
-                                                <input type="precio" class="form-control" id="precio" name="precio">
-                                            </div>
-                                            <div class="col-xs-4 col-sm-4 col-md-4">
-                                                <label for="tipo" class="col-sm-2 col-form-label">Tipo</label>
-                                                <select class="mb-3 form-select" aria-label="Default select example"
-                                                    id="tipo" name="tipo">
-                                                    <option value="1" selected>Publica</option>
-                                                    <option value="2">Privada</option>
-                                                </select>
-                                            </div>
-                                            <div class="my-4 col-xs-4 col-sm-4 col-md-4">
-                                                <div class="gap-2 mx-auto d-grid col-6">
-                                                    <button class="btn btn-secondary" type="submit">Guardar</button>
+                                            <div class="p-3 card-body">
+                                                <input class="form-control" type="file" id="formFile" name="file[]"
+                                                    multiple>
+                                                <div class="row" style="margin-top:2px;">
+                                                    <div class="col-xs-4 col-sm-4 col-md-4">
+                                                        <label for="precio" class="col-sm-2 col-form-label">Precio</label>
+                                                        <input type="precio" class="form-control" id="precio"
+                                                            name="precio">
+                                                    </div>
+                                                    <div class="col-xs-4 col-sm-4 col-md-4">
+                                                        <label for="tipo" class="col-sm-2 col-form-label">Tipo</label>
+                                                        <select class="mb-3 form-select" aria-label="Default select example"
+                                                            id="tipo" name="tipo">
+                                                            <option value="1" selected>Publica</option>
+                                                            <option value="2">Privada</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="my-4 col-xs-4 col-sm-4 col-md-4">
+                                                        <div class="gap-2 mx-auto d-grid col-6">
+                                                            <button class="btn btn-secondary" type="submit">Guardar</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </form>
+                                </form>
+                            @endrole
+                        </div>
                         <div class="my-3 col-12 col-xl-12">
                             <div class="card card-plain h-100">
                                 <div class="p-3 pb-0 card-header">
@@ -151,6 +157,7 @@
                     enlace.click()
                 })
             </script>
+            <script></script>
     </body>
 
 @endsection

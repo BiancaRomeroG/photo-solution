@@ -10,11 +10,6 @@
             @csrf
             
             <input type="hidden" value="cliente" name="tipo">
-
-            <div class="form-group row">
-                <x-jet-label for="photo" value="{{ __('Foto de perfil') }}" />
-                <x-jet-input id="photo" class="block w-full mt-1" type="file" name="photo" :value="old('photo')"/>
-            </div>
             
             <div class="flex mt-4">
                 <div class="mr-1">

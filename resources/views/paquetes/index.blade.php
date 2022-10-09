@@ -2,19 +2,7 @@
 @section('title', 'paquetes')
 
 @section('main')
-    <!DOCTYPE html>
-    <html lang="es">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <title>@yield('title')</title>
-        <link rel="stylesheet" href="{{ asset('css/cards.css') }}" type="text/css">
-    </head>
-
     <body>
-
         <div class="px-2 container-fluid px-md-3">
             <div class="card2">
                 <div class="p-4 pb-2 card-header">
@@ -31,10 +19,11 @@
                             @foreach ($paquetes as $paquete)
                                 <div class="card2">
                                     <div class="contenido-card2">
-                                        <h3 class="text-white bg-danger">{{ $paquete->nombre }}</h3>
+                                        <h3 class="text-white bg-secondary">{{ $paquete->nombre }}</h3>
                                         <p>Precio: {{ $paquete->precio }}</p>
                                         <p>Cantidad de Fotos: {{ $paquete->cantidad_fotos }}</p>
                                         <p>Descripcion: {{ $paquete->descripcion }}</p>
+                                        <a href="{{route('paquete.edit', $paquete->id)}}">Editar</a>
                                     </div>
                                 </div>
                             @endforeach
@@ -48,9 +37,10 @@
 
 
     </body>
-
+    
+ <!--Estilos del Css -->
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+        
 
         * {
             margin: 0;

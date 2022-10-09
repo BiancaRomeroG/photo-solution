@@ -100,19 +100,31 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="p-3 card-body">
-                                <input class="form-control" type="file" id="formFile" name="file[]" multiple>
-                            </div>
+                            <form action="{{route('profile.update_photo', Auth::user()->id)}}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="p-3 card-body">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <input class="form-control" type="file" id="formFile" name="file[]"
+                                                multiple>
+                                        </div>
+                                        <div class="col-4 ">
+                                            <button class="btn btn-secondary" type="submit">Guardar</button>
+                                        </div>
+                                    </div>
+                            </form>
                         </div>
                     </div>
 
                 </div>
             </div>
 
-            
+
         </div>
     </div>
+    <style>
 
+    </style>
 
 
 @endsection
