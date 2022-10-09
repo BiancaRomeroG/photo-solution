@@ -15,11 +15,8 @@ class CreateCatalogosTable extends Migration
     {
         Schema::create('catalogos', function (Blueprint $table) {
             $table->id();
-            $table->integer('cantidad_fotos');
             $table->unsignedBigInteger('id_evento');
             $table->foreign('id_evento')->references('id')->on('eventos');
-            $table->unsignedBigInteger('id_qr')->nullable();
-            $table->foreign('id_qr')->references('id')->on('qr_code');
             $table->timestamps();
         });
     }

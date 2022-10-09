@@ -13,5 +13,7 @@ class Fotografia extends Model
     protected $fillable = [
         'direccion_img',
         'precio',
+        'tipo',
+        'id_catalogo',
     ];
 }

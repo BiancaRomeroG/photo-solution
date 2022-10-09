@@ -22,9 +22,11 @@
                         <div class="col col-sm-6">
                             <h4 class="text-dark" class="card-title">Paquetes</h4>
                         </div>
+                        @role('Fotografo')
                         <div class="col-6 col-md-auto col-sm-6">
                             <a href="{{ route('paquete.create') }}" class="btn btn-sm btn-dark">Agregar nuevo Paquete</a>
                         </div>
+                        @endrole
                         <div class="container-card2">
                             @foreach ($paquetes as $paquete)
                                 <div class="card2">

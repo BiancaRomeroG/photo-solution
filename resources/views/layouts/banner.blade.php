@@ -7,7 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-
+    
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
@@ -28,7 +28,7 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">   
 </head>
 
 <body>
@@ -51,16 +51,18 @@
                 </div>
 
                 <div class="w-100 navbar-nav">
-                    <a href="{{route('dashboard')}}" class="nav-item nav-link active"><i
+                    <a href="{{ route('dashboard') }}" class="nav-item nav-link active"><i
                             class="fa fa-tachometer-alt me-2"></i>Home</a>
                     <div class="nav-item">
                         <a href="{{ route('fotografo.index') }}" class="nav-link "><i
                                 class="fa fa-laptop me-2"></i>Fotografos</a>
                     </div>
-                    <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Mis Eventos</a>
-                    <a href="{{route('paqueteshow')}}" class="nav-item nav-link"><i class="bi bi-folder-fill me-2"></i>Mis Paquetes</a>
-                    <a href="{{route('catalogo.index')}}" class="nav-item nav-link"><i class="bi bi-camera-fill me-2"></i>Catalogo</a>
-                    
+                    <a href="{{ route('evento.index') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Mis
+                        Eventos</a>
+                    <a href="{{ route('paqueteshow') }}" class="nav-item nav-link"><i
+                            class="bi bi-folder-fill me-2"></i>Mis Paquetes</a>
+                    {{-- <a href="{{route('catalogo.index')}}" class="nav-item nav-link"><i class="bi bi-camera-fill me-2"></i>Catalogo</a> --}}
+
                 </div>
             </nav>
         </div>
@@ -124,34 +126,34 @@
             </main>
 
 
-        <!-- Back to Top -->
-       
-    </div>
+            <!-- Back to Top -->
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('lib/chart/chart.min.js') }}"></script>
-    <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('lib/tempusdominus/js/moment.min.js') }}"></script>
-    <script src="{{ asset('lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
-    <script src="{{ asset('lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+        </div>
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{{ asset('lib/chart/chart.min.js') }}"></script>
+        <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
+        <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
+        <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('lib/tempusdominus/js/moment.min.js') }}"></script>
+        <script src="{{ asset('lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
+        <script src="{{ asset('lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 
-    <!-- Template Javascript -->
-    <script src="{{ asset('js/main-dash.js') }}"></script>
+        <!-- Template Javascript -->
+        <script src="{{ asset('js/main-dash.js') }}"></script>
 
-    <script>
-        function submit() {
-            submitbutton.submit();
-        }
-    </script>
-    <script>
-        function profile() {
-            profilebutton.submit();
-        }
-    </script>
+        <script>
+            function submit() {
+                submitbutton.submit();
+            }
+        </script>
+        <script>
+            function profile() {
+                profilebutton.submit();
+            }
+        </script>
 </body>
 
 </html>

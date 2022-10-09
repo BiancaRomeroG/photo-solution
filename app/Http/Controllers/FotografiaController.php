@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fotografia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FotografiaController extends Controller
 {
@@ -34,7 +36,19 @@ class FotografiaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fotos = $request->file;
+        foreach($fotos as $foto)
+        {
+            $img = $foto->store('public/'. $request->catalogo);
+            $url = Storage::url($img);
+            Fotografia::create([
+                'direccion_img' => $url,
+                'precio'=> $request->precio,
+                'tipo'=> $request->tipo,
+                'id_catalogo'=> $request->catalogo,
+            ]);
+        }
+        return redirect()->route('catalogo.show', $request->catalogo);
     }
 
     /**

@@ -10,9 +10,9 @@
                         <h4 class="text-dark" class="card-title">Eventos</h4>
                     </div>
                     <div class="col-6 col-md-auto col-sm-6">
-                        {{-- @can('Crear areas') --}}
+                        @can('Crear eventos')
                         <a href="{{ route('fotografo.index') }}" class="btn btn-sm btn-dark">Agregar nuevo evento</a>
-                        {{-- @endcan --}}
+                        @endcan
                     </div>
                 </div>
             </div>
@@ -83,10 +83,12 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <button class="m-auto btn btn-icon btn-sm btn-secondary" type="button">
-                                                <span class="material-icons"><i
-                                                        class="bi bi-images me-2"></i>Catalogo</span>
-                                            </button>
+                                            <a href="{{route('catalogo.show', $evento->catalogo->id)}}">
+                                                <button class="m-auto btn btn-icon btn-sm btn-secondary" type="button">
+                                                    <span class="material-icons"><i
+                                                            class="bi bi-images me-2"></i>Catalogo</span>
+                                                </button>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach

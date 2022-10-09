@@ -26,11 +26,11 @@
             </div>
             <div class="mb-3">
                 <label  class="form-label">Paquete:</label>
-                <select class="mb-3 form-select" aria-label="Default select example" id="tipo">
-                    <option selected>---Escoja una opcion---</option>
-                    <option value="1">Basic</option>
-                    <option value="2">Estandar</option>
-                    <option value="3">Premiun</option>
+                <select class="mb-3 form-select" aria-label="Default select example" id="id_paquete" name="id_paquete">
+                    <option selected disabled>---Escoja una opcion---</option>
+                    <option value="1" >Basic</option>
+                    <option value="2" >Estandar</option>
+                    <option value="3" >Premiun</option>
                 </select>
             </div>
             

@@ -9,6 +9,7 @@ use App\Models\Evento;
 use App\Models\Fotografo;
 use App\Models\Organizador;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class EventoController extends Controller
@@ -20,8 +21,18 @@ class EventoController extends Controller
      */
     public function index()
     {
-        $eventos = Evento::all();
-        // return $eventos;
+        if(Auth::user()->hasRole('Fotografo'))
+        {
+            $fotografo = Fotografo::where('id_usuario',Auth::user()->id)->first(); 
+            $eventos = Evento::where('id_fotografo','=',$fotografo->id)->get();
+        }
+        if(Auth::user()->hasRole('Organizador'))
+        {
+            $organizador = Organizador::where('id_usuario',Auth::user()->id)->first(); 
+            $eventos = Evento::where('id_organizador','=',$organizador->id)->get();
+        }
+
+       // $catalogo = Catalogo::where('id_evento','=',$eventos->id)->first();
         return view('evento.index', compact('eventos'))->with('i');
         // return view('evento.index');
     }
@@ -35,8 +46,6 @@ class EventoController extends Controller
     {
         
         $fotografo = Fotografo::find($id);
-
-        // $user = User::where('id', $fotografo->id_usuario)->first();
         return view('evento.create',compact('fotografo'));
     }
 
@@ -48,33 +57,34 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
-        dd('hola');
-        //Se crea el evento
-        // $evento = new Evento();
-        // $evento->idfotografo = $id;
-        // $evento->idorganizador = auth()->user()->id;
-        // $evento->fecha = $request->fecha;
-        // $evento->hora = $request->hora;
-        // $evento->nombre_evento = $request->nombre_evento;
-        // $evento->direccion = $request->direccion;
-        // $evento->estado = 'En proceso';
-        // $evento->save();
-        
-        return redirect()->route('evento.index');
+        //
     }
 
     public function storeevento(Request $request,$id)
     {
-       // Se crea el evento
+        $organizador = Organizador::where('id_usuario',Auth::user()->id)->first();
+
+       //Se crea el evento
         $evento = new Evento();
         $evento->id_fotografo = $id;
-        $evento->id_organizador = auth()->user()->id;
+        $evento->id_organizador = $organizador->id;
+        $evento->id_paquete = $request->id_paquete;
         $evento->fecha = $request->fecha;
         $evento->hora = $request->hora;
         $evento->nombre_evento = $request->nombre_evento;
         $evento->direccion = $request->direccion;
         $evento->estado = 'En proceso';
         $evento->save();
+        
+
+        // Evento::create([
+        //     'id_fotografo' => $id, 
+        //     'id_organizador' => 1,
+        //     'nombre_evento'=> $request->nombre_evento,
+        //     'direccion'=> $request->direccion,
+        //     'fecha'=> $request->fecha,
+        //     'hora'=> $request->hora,
+        // ]);
 
         Catalogo::create([
             'cantidad_fotos' => 0,
@@ -93,7 +103,7 @@ class EventoController extends Controller
      */
     public function show()
     {
-       
+
         //
     }
 

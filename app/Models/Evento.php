@@ -30,4 +30,12 @@ class Evento extends Model
         return $this->belongsTo('App\Models\Organizador','id_organizador','id');
     }
 
+    public function paquete(){
+        return $this->hasOne('App\Models\Paquete','id_paquete','id');
+    }
+
+    public function catalogo(){
+        return $this->hasOne('App\Models\Catalogo','id_evento','id');
+    }
+
 }

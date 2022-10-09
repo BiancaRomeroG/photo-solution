@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CatalogoController;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\FotografiaController;
 use App\Http\Controllers\FotografoController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PaqueteController;
@@ -25,16 +26,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register-fotografo', [RegisterController::class, 'create'])->name('register-fotografo');
-Route::post('/register-fotografo', [RegisterController::class, 'store'])->name('fotografo.store');
-Route::get('/evento', [EventoController::class, 'index'])->name('evento.index');
-Route::get('/eventocreate/{id}', [EventoController::class, 'create'])->name('evento.create');
-Route::post('/eventostore/{id}', [EventoController::class, 'storeevento'])->name('evento.storeevento');
 
-Route::get('catalogo',[CatalogoController::class,'index'])->name('catalogo.index');
-
-Route::resource('paquete',PaqueteController::class);
-Route::get('/paqueteshow',[PaqueteShowController::class,'show'])->name('paqueteshow');
 Route::middleware([
     'auth:sanctum', config('jetstream.auth_session'), 'verified'
 ])->group(function () {
@@ -44,4 +36,13 @@ Route::middleware([
 
     Route::get('/pago-register', [PagoController::class, 'index'])->name('pago.index');
     Route::get('/card-fotografo', [FotografoController::class, 'index'])->name('fotografo.index');
+    Route::get('/register-fotografo', [RegisterController::class, 'create'])->name('register-fotografo');
+    Route::post('/register-fotografo', [RegisterController::class, 'store'])->name('fotografo.store');
+    Route::get('/evento', [EventoController::class, 'index'])->name('evento.index');
+    Route::get('/eventocreate/{id}', [EventoController::class, 'create'])->name('evento.create');
+    Route::post('/eventostore/{id}', [EventoController::class, 'storeevento'])->name('evento.storeevento');
+    Route::get('/catalogo/{id}', [CatalogoController::class, 'show'])->name('catalogo.show');
+    Route::resource('paquete', PaqueteController::class);
+    Route::get('/paqueteshow', [PaqueteShowController::class, 'show'])->name('paqueteshow');
+    Route::resource('fotografia', FotografiaController::class);
 });

@@ -10,8 +10,11 @@ class Catalogo extends Model
     use HasFactory;
     protected $table = 'catalogos';
     protected $fillable = [
-        'cantidad_fotos',
         'id_evento',
-        'id_qr',
     ];
+
+    public function evento(){
+        return $this->hasOne(Evento::class,'id_evento');
+    }
+
 }

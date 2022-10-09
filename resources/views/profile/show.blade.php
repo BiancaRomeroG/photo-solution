@@ -101,7 +101,7 @@
                                 </div>
                             </div>
                             <div class="p-3 card-body">
-                                
+                                <input class="form-control" type="file" id="formFile" name="file[]" multiple>
                             </div>
                         </div>
                     </div>

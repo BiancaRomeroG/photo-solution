@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Catalogo;
+use App\Models\Evento;
+use App\Models\Fotografia;
+use App\Models\Fotografo;
+use App\Models\Organizador;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CatalogoController extends Controller
 {
@@ -45,7 +51,13 @@ class CatalogoController extends Controller
      */
     public function show($id)
     {
-        //
+        // $evento = Evento::where('id', '=', $id)->first();
+        // $catalogo = Catalogo::where('id_evento','=',$evento->id)->first();
+        $catalogo = Catalogo::findOrFail($id);
+        $evento = Evento::findOrFail($catalogo->id_evento); 
+        $fotografias = Fotografia::where('id_catalogo','=',$catalogo->id)->get();
+        
+       return view('catalogo.show', compact('evento','catalogo','fotografias'));
     }
 
     /**
