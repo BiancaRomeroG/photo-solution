@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Catalogo;
+use App\Models\Cliente;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use App\Models\Evento;

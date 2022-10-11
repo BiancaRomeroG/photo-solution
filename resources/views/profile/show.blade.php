@@ -114,9 +114,6 @@
                                         </div>
                                         <div class="col-4 ">
                                             <button class="btn btn-secondary" type="submit">Guardar</button>
-                                            <a href="{{route('user.destroy')}}">
-                                                <button class="btn btn-danger" type="">Eliminar</button>
-                                            </a>
                                         </div>
 
                                         <div class="container2">

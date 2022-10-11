@@ -122,9 +122,6 @@
                                             <h6 class="mb-0 text-danger">Imagenes del Catalogo</h6>
                                         </div>
                                         <div class="col-2">
-                                            <div class="gap-2 mx-auto d-grid col-12">
-                                                <button type="button" class="btn btn-secondary">Comprar</button>
-                                            </div>
                                         </div>
                                         
                                     </div>
