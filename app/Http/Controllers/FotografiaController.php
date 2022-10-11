@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Fotografia;
 use App\Models\User;
+use App\Notifications\AparicionCatalogo;
 use App\Notifications\CatalogNotification;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
@@ -77,7 +78,12 @@ class FotografiaController extends Controller
             foreach (json_decode($response, true) as $notificableUser) {
                 // Notificar usuario dado su ID: $notificableUser->name
                 $user = User::find($notificableUser['name']);
-                //$user->notify(new CatalogNotification($request->catalogo));
+                try {
+                    $user->notify(new AparicionCatalogo('/catalogo/'.$request->catalogo));
+                } catch (\Throwable $th) {
+                    //throw $th;
+                }
+                
     
                 // Enviarle el catalogo: $request->catalogo;
 

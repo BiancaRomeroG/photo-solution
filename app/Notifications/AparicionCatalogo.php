@@ -7,19 +7,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class CatalogNotification extends Notification
+class AparicionCatalogo extends Notification
 {
     use Queueable;
-    private $catalog;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($catalog)
+    public function __construct($catalogo)
     {
-        $this->catalog = $catalog;
+        $this->catalogo=$catalogo;
     }
 
     /**
@@ -42,9 +41,9 @@ class CatalogNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Apareces en una foto!')
-                    ->action('Entra a ver el catalogo', $this->catalog)
-                    ->line('Gracias');
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application!');
     }
 
     /**
@@ -56,8 +55,7 @@ class CatalogNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'body' => "Apareces en una foto. Ve al catalogo",
-            'url' => $this->catalog
+            'catalogo' => $this->catalogo
         ];
     }
 }

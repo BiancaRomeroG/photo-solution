@@ -29,7 +29,7 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    
+
 
 </head>
 
@@ -64,11 +64,12 @@
                     <a href="{{ route('evento.index') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Mis
                         Eventos</a>
                     @role('Fotografo')
-                    <a href="{{ route('paqueteshow') }}" class="nav-item nav-link"><i
-                        class="bi bi-folder-fill me-2"></i>Mis Paquetes</a>
+                        <a href="{{ route('paqueteshow') }}" class="nav-item nav-link"><i
+                                class="bi bi-folder-fill me-2"></i>Mis Paquetes</a>
                     @endrole
-                    
-                    <a href="#" class="nav-item nav-link"><i class="bi bi-camera-fill me-2"></i>Catalogo Publicos</a>
+
+                    <a href="#" class="nav-item nav-link"><i class="bi bi-camera-fill me-2"></i>Catalogo
+                        Publicos</a>
 
                 </div>
             </nav>
@@ -93,9 +94,27 @@
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-bell me-lg-2"></i>
+                            <i class="fa fa-bell me-lg-2">
+                                @if (count(auth()->user()->unreadNotifications) > 0)
+                                    {{count(auth()->user()->unreadNotifications)}}
+                                @endif
+                            </i>
+
                             <span class="d-none d-lg-inline-flex">Notificaciones</span>
                         </a>
+
+                        <div class="m-0 border-0 dropdown-menu dropdown-menu-end bg-light rounded-0 rounded-bottom">
+                            @foreach (auth()->user()->unreadNotifications as $notification)
+                                <a href="{{ $notification->data['catalogo'] }}" class="dropdown-item">
+                                    <h6 class="mb-0 fw-normal">Apareces en un foto.</h6>
+                                    <small>Hace un instante</small>
+                                </a>
+                                <hr class="dropdown-divider">
+                            @endforeach
+
+
+
+                        </div>
 
                     </div>
                     <div class="nav-item dropdown">
@@ -105,7 +124,8 @@
                                 class="d-none d-lg-inline-flex">{{ Auth::user()->name . ' ' . Auth::user()->apellido }}</span>
                         </a>
                         <div class="m-0 border-0 dropdown-menu dropdown-menu-end bg-light rounded-0 rounded-bottom">
-                            <form action="{{ route('user.show', Auth::user()->id) }}" method="GET" name="profilebutton">
+                            <form action="{{ route('user.show', Auth::user()->id) }}" method="GET"
+                                name="profilebutton">
                                 <a class="dropdown-item" onclick="profile()">
                                     <i data-feather="user" aria-hidden="true"></i>
                                     <span>Perfil</span>
