@@ -126,14 +126,6 @@
                                                 <button type="button" class="btn btn-secondary">Comprar</button>
                                             </div>
                                         </div>
-
-                                        <div class="col-2">
-                                            <div class="gap-2 mx-auto d-grid col-12">
-                                                <a href="">
-                                                    <button type="button" class="text-white btn btn-warning">Usuarios</button>
-                                                </a>
-                                            </div>
-                                        </div>
                                         
                                     </div>
                                 </div>
