@@ -10,9 +10,9 @@
                         <h4 class="text-dark" class="card-title">Eventos</h4>
                     </div>
                     <div class="col-6 col-md-auto col-sm-6">
-                        @can('Crear eventos')
+                        @role('Organizador')
                         <a href="{{ route('fotografo.index') }}" class="btn btn-sm btn-dark">Agregar nuevo evento</a>
-                        @endcan
+                        @endrole
                     </div>
                 </div>
             </div>

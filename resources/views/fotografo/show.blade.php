@@ -10,9 +10,6 @@
     <div class="container-card">
         @foreach ($fotografos as $fotografo)
             <div class="card">
-                <figure>
-                    <img src="{{ asset('import/assets/img/fotografos/fotografo-1.png') }}">
-                </figure>
                 
                 <div class="contenido-card">
                     <h3>{{ $fotografo->user->name }} {{ $fotografo->user->apellido }}</h3>

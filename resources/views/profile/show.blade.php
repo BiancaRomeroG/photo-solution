@@ -3,6 +3,9 @@
 
 @section('main')
 
+    <head>
+        <link rel="stylesheet" href="{{ asset('css/img.css') }}">
+    </head>
     <div class="px-2 container-fluid px-md-4">
         <div class="mt-4 page-header min-height-300 border-radius-xl"
             style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
@@ -100,31 +103,146 @@
                                     </div>
                                 </div>
                             </div>
-                            <form action="{{route('profile.update_photo', Auth::user()->id)}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('profile.update_photo') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="p-3 card-body">
                                     <div class="row">
                                         <div class="col-8">
                                             <input class="form-control" type="file" id="formFile" name="file[]"
                                                 multiple>
+
                                         </div>
                                         <div class="col-4 ">
                                             <button class="btn btn-secondary" type="submit">Guardar</button>
+                                            <a href="{{route('user.destroy')}}">
+                                                <button class="btn btn-danger" type="">Eliminar</button>
+                                            </a>
+                                        </div>
+
+                                        <div class="container2">
+                                            @foreach ($foto_perfils as $foto_perfil)
+                                                <label class="card2">
+                                                    <input type="checkbox" name="category" id="category">
+                                                    <div class="card2-content2">
+                                                        <img src="{{ $foto_perfil->direccion_img }}" alt="">
+                                                    </div>
+                                                </label>
+                                            @endforeach
                                         </div>
                                     </div>
                             </form>
                         </div>
                     </div>
-
                 </div>
             </div>
-
-
         </div>
     </div>
+
     <style>
+        .container2 {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+        }
 
+        .card2 {
+            position: relative;
+            height: 300px;
+            width: 340px;
+            margin: 10px;
+        }
+
+        .card2:active {
+            transform: scale(0.96);
+        }
+
+        .card2 input:checked~.card2-content2 {
+            border-color: #4580E5;
+        }
+
+        .card2 input {
+            position: absolute;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .card2 .card2-content2 {
+            position: relative;
+            cursor: pointer;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 3px solid #ffffff;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.02);
+        }
+
+        .card2 img {
+            position: relative;
+            height: 100%;
+            width: 400px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            transition: all ease 0.3s;
+        }
+
+        .card2:hover img {
+            width: 100%;
+            height: 240px;
+
+        }
+
+        .card2 input:checked~.card2-content2 img {
+            filter: grayscale(0.4);
+        }
+
+        .content2 h4 {
+            margin: 0 0 8px 0;
+        }
+
+        .content2 p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .content2 {
+            position: absolute;
+            bottom: -122px;
+            width: 100%;
+            padding: 12px;
+            background-color: #ffffff;
+            transition: all ease 0.3s;
+        }
+
+        .card2:hover .content2 {
+            bottom: 0;
+        }
+
+        .card2 input:checked~.card2-content2::before,
+        .card2 input:checked~.card2-content2::after {
+            content: '';
+            position: absolute;
+            z-index: 1;
+        }
+
+        .card2-content2::before {
+            height: 20px;
+            width: 20px;
+            top: 10px;
+            right: 10px;
+            border: 1px solid #ffffff;
+            border-radius: 50%;
+            background-color: #4580E5;
+        }
+
+        .card2-content2::after {
+            height: 4px;
+            width: 8px;
+            top: 16px;
+            right: 16px;
+            border: 1px solid #ffffff;
+            border-width: 0 0 2px 2px;
+            transform: rotate(-45deg);
+        }
     </style>
-
-
 @endsection

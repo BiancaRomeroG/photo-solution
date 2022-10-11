@@ -49,5 +49,7 @@ Route::group(['middleware'=> 'disable_back'],function(){
         Route::get('/paqueteshow', [PaqueteShowController::class, 'show'])->name('paqueteshow');
         Route::resource('fotografia', FotografiaController::class);
         Route::post('/profilephoto',[UserController::class,'update_photo'])->name('profile.update_photo');
+        Route::get('/user.show/{id}',[UserController::class, 'show'])->name('user.show');
+        Route::get('/userdestroy',[UserController::class, 'destroy'])->name('user.destroy');
     });
 });

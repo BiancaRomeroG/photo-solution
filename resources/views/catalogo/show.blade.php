@@ -5,6 +5,7 @@
 
     <head>
         <link rel="stylesheet" href="{{ asset('css/estilos-gallery.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/catalogo.css') }}">   
     </head>
 
     <body>
@@ -27,14 +28,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="codigo_img" class="flex justify-center my-3" style="align-content: center">
+                                <center>
+                                    <div id="codigo_img" class="flex justify-center my-3" style="align-content: center">
 
-                                </div>
-                                <div class="px-6 my-5 mb-10">
-                                    <div class="gap-2 mx-auto d-grid col-6">
-                                        <button class="btn btn-secondary" type="button" id="download_qr">Guardar</button>
                                     </div>
-                                </div>
+                                        <div class="gap-2 mx-auto my-3 d-grid col-6">
+                                            <button class="btn btn-secondary" type="button" id="download_qr"><i class="bi bi-download me-2"></i>Descargar</button>
+                                        </div>
+                                </center>
+                                
                             </div>
                         </div>
 
@@ -95,7 +97,8 @@
                                                         <label for="tipo" class="col-sm-2 col-form-label">Tipo</label>
                                                         <select class="mb-3 form-select" aria-label="Default select example"
                                                             id="tipo" name="tipo">
-                                                            <option value="1" selected>Publica</option>
+                                                            <option selected disabled>--Escoja una opcion--</option>
+                                                            <option value="1">Publica</option>
                                                             <option value="2">Privada</option>
                                                         </select>
                                                     </div>
@@ -114,16 +117,30 @@
                         <div class="my-3 col-12 col-xl-12">
                             <div class="card card-plain h-100">
                                 <div class="p-3 pb-0 card-header">
-                                    <div class="row">
+                                    <div class="p-2 row justify-content-around">
                                         <div class="col-md-8 d-flex align-items-center">
                                             <h6 class="mb-0 text-danger">Imagenes del Catalogo</h6>
                                         </div>
+                                        <div class="col-2">
+                                            <div class="gap-2 mx-auto d-grid col-12">
+                                                <button type="button" class="btn btn-secondary">Comprar</button>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                 </div>
-                                <div class="img-gallery">
+                                <div class="container2">
                                     @if (count($fotografias) > 0)
                                         @foreach ($fotografias as $fotografia)
-                                            <img src="{{ $fotografia->direccion_img }}" alt="">
+                                            <label class="card2">
+                                                <input type="checkbox" name="category" id="category">
+                                                <div class="card2-content2">
+                                                    <img src="{{ $fotografia->direccion_img }}" alt="">
+                                                    <div class="content2">
+                                                        <p><strong>Precio: {{$fotografia->precio}}</strong></p>
+                                                    </div>
+                                                </div>
+                                            </label>
                                         @endforeach
                                     @endif
                                 </div>
@@ -131,33 +148,32 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            {{-- <script defer src=" {{ asset('js/qrious.min.js') }}"></script> --}}
-            {{-- <script src="{{ asset('js/qr-code.js') }}"></script> --}}
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
-                integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
-                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-            <script>
-                // Generar CodeQR
-                const image = document.getElementById("codigo_img")
-                const url = window.location.href
+                {{-- <script defer src=" {{ asset('js/qrious.min.js') }}"></script> --}}
+                {{-- <script src="{{ asset('js/qr-code.js') }}"></script> --}}
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+                    integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+                    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <script>
+                    // Generar CodeQR
+                    const image = document.getElementById("codigo_img")
+                    const url = window.location.href
 
-                console.log(url);
+                    console.log(url);
 
-                const QR = new QRCode(image)
-                QR.makeCode(url)
+                    const QR = new QRCode(image)
+                    QR.makeCode(url)
 
-                //Descargar Code QR
-                const image_qr = document.getElementById("download_qr")
+                    //Descargar Code QR
+                    const image_qr = document.getElementById("download_qr")
 
-                image_qr.addEventListener("click", () => {
-                    const enlace = document.createElement("a")
-                    enlace.href = image.querySelector('img').src;
-                    enlace.download = "Codigo QR generado desde PHOTOGRAPHY"
-                    enlace.click()
-                })
-            </script>
-            <script></script>
+                    image_qr.addEventListener("click", () => {
+                        const enlace = document.createElement("a")
+                        enlace.href = image.querySelector('img').src;
+                        enlace.download = "Codigo QR generado desde PHOTOGRAPHY"
+                        enlace.click()
+                    })
+                </script>
+                
     </body>
 
 @endsection

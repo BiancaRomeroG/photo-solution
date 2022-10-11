@@ -67,7 +67,8 @@
                     <a href="{{ route('paqueteshow') }}" class="nav-item nav-link"><i
                         class="bi bi-folder-fill me-2"></i>Mis Paquetes</a>
                     @endrole
-                    {{-- <a href="{{route('catalogo.index')}}" class="nav-item nav-link"><i class="bi bi-camera-fill me-2"></i>Catalogo</a> --}}
+                    
+                    <a href="#" class="nav-item nav-link"><i class="bi bi-camera-fill me-2"></i>Catalogo Publicos</a>
 
                 </div>
             </nav>
@@ -99,13 +100,12 @@
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="{{ asset('img/avatar/avatar-face-02.png') }}"
-                                alt="" style="width: 40px; height: 40px;">
+                            <i class="bi bi-person-circle me-2"></i>
                             <span
                                 class="d-none d-lg-inline-flex">{{ Auth::user()->name . ' ' . Auth::user()->apellido }}</span>
                         </a>
                         <div class="m-0 border-0 dropdown-menu dropdown-menu-end bg-light rounded-0 rounded-bottom">
-                            <form action="{{ route('profile.show') }}" method="GET" name="profilebutton">
+                            <form action="{{ route('user.show', Auth::user()->id) }}" method="GET" name="profilebutton">
                                 <a class="dropdown-item" onclick="profile()">
                                     <i data-feather="user" aria-hidden="true"></i>
                                     <span>Perfil</span>

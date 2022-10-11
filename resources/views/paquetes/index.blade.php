@@ -23,7 +23,9 @@
                                         <p>Precio: {{ $paquete->precio }}</p>
                                         <p>Cantidad de Fotos: {{ $paquete->cantidad_fotos }}</p>
                                         <p>Descripcion: {{ $paquete->descripcion }}</p>
+                                        @role('Fotografo')
                                         <a href="{{route('paquete.edit', $paquete->id)}}">Editar</a>
+                                        @endrole
                                     </div>
                                 </div>
                             @endforeach
