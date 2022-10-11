@@ -67,10 +67,8 @@ class CreateNewUser implements CreatesNewUsers
 
             Cliente::create([
                 'id_usuario' => $user->id,
-            ]);
-
-            
+            ]);      
+            return $user;
         }
-        return $user;
     }
 }
