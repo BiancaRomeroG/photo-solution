@@ -33,6 +33,8 @@ class CreateNewUser implements CreatesNewUsers
             'ci' => ['required', 'string', 'max:100'],
         ])->validate();
 
+        $newUser = new User();
+
         if ($input['tipo'] == 'Fotografo') {
             $user = User::create([
                 'name' => $input['name'],
@@ -47,7 +49,7 @@ class CreateNewUser implements CreatesNewUsers
                 'id_usuario' => $user->id,
                 'nombre_studio' => $input['nombre_studio'],
             ]);
-            return $user;
+            $newUser = $user;
         }
 
         if ($input['tipo'] == 'Cliente') {
@@ -63,7 +65,8 @@ class CreateNewUser implements CreatesNewUsers
             Cliente::create([
                 'id_usuario' => $user->id,
             ]);      
-            return $user;
+            $newUser = $user;
         }
+        return $user;
     }
 }
