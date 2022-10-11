@@ -33,40 +33,31 @@ class CreateNewUser implements CreatesNewUsers
             'ci' => ['required', 'string', 'max:100'],
         ])->validate();
 
-        $newUser = new User();
+        $user = User::create([
+            'name' => $input['name'],
+            'apellido' => $input['apellido'],
+            'email' => $input['email'],
+            'telefono' => $input['telefono'],
+            'ci' => $input['ci'],
+            'password' => Hash::make($input['password']),
+        ]);
 
         if ($input['tipo'] == 'Fotografo') {
-            $user = User::create([
-                'name' => $input['name'],
-                'apellido' => $input['apellido'],
-                'email' => $input['email'],
-                'telefono' => $input['telefono'],
-                'ci' => $input['ci'],
-                'password' => Hash::make($input['password']),
-            ])->assignRole('Fotografo');
+            $user->assignRole('Fotografo');
 
             Fotografo::create([
                 'id_usuario' => $user->id,
                 'nombre_studio' => $input['nombre_studio'],
             ]);
-            $newUser = $user;
         }
 
         if ($input['tipo'] == 'Cliente') {
-            $user = User::create([
-                'name' => $input['name'],
-                'apellido' => $input['apellido'],
-                'email' => $input['email'],
-                'telefono' => $input['telefono'],
-                'ci' => $input['ci'],
-                'password' => Hash::make($input['password']),
-            ])->assignRole('Cliente');
+            $user->assignRole('Cliente');
 
             Cliente::create([
                 'id_usuario' => $user->id,
             ]);      
-            $newUser = $user;
         }
-        return $newUser;
+        return $user;
     }
 }
