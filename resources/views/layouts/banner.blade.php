@@ -60,10 +60,20 @@
                             <a href="{{ route('fotografo.index') }}" class="nav-link "><i
                                     class="fa fa-laptop me-2"></i>Fotografos</a>
                         </div>
-                        <a href="{{ route('evento.index') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Mis
-                            Eventos</a>
+                       
                     @endrole
+
                     
+                    @role('Fotografo')
+                    <a href="{{ route('evento.index') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Mis
+                        Eventos</a>
+                    @endrole
+
+                    @role('Organizador')
+                    <a href="{{ route('evento.index') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Mis
+                        Eventos</a>
+                    @endrole
+                        
                     @role('Fotografo')
                         <a href="{{ route('paqueteshow') }}" class="nav-item nav-link"><i
                                 class="bi bi-folder-fill me-2"></i>Mis Paquetes</a>

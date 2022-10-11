@@ -34,5 +34,6 @@ class RolesSeeder extends Seeder
         ]);
 
         Permission::create(['name'=>'dashboard']);
+       
     }
 }
