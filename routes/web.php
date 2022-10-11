@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CatalogNotificationController;
 use App\Http\Controllers\CatalogoController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\FotografiaController;
@@ -51,5 +52,7 @@ Route::group(['middleware'=> 'disable_back'],function(){
         Route::post('/profilephoto',[UserController::class,'update_photo'])->name('profile.update_photo');
         Route::get('/user.show/{id}',[UserController::class, 'show'])->name('user.show');
         Route::get('/userdestroy',[UserController::class, 'destroy'])->name('user.destroy');
+    
+        // Route::get('send-notification', [CatalogNotificationController::class, 'sendNotification'])->name('notification.send');
     });
 });
