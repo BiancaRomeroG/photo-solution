@@ -47,12 +47,7 @@ class CreateNewUser implements CreatesNewUsers
                 'id_usuario' => $user->id,
                 'nombre_studio' => $input['nombre_studio'],
             ]);
-
-            // if (request()->hasFile('photo')) {
-            //     $photo = request()->file('photo')->getClientOriginalName();
-            //     request()->file('photo')->storeAs('foto-perfil', $user->id .'/'. $photo, '');
-            //     $user->update(['profile_photo_path' => 'storage/app/foto-perfil'. $user->id .'/'.$photo]);
-            // }
+            return $user;
         }
 
         if ($input['tipo'] == 'Cliente') {
