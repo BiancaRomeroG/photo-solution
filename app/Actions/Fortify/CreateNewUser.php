@@ -33,7 +33,7 @@ class CreateNewUser implements CreatesNewUsers
             'ci' => ['required', 'string', 'max:100'],
         ])->validate();
 
-        if ($input['tipo'] == 'fotografo') {
+        if ($input['tipo'] == 'Fotografo') {
             $user = User::create([
                 'name' => $input['name'],
                 'apellido' => $input['apellido'],
@@ -41,7 +41,7 @@ class CreateNewUser implements CreatesNewUsers
                 'telefono' => $input['telefono'],
                 'ci' => $input['ci'],
                 'password' => Hash::make($input['password']),
-            ])->assignRole('fotografo');
+            ])->assignRole('Fotografo');
 
             Fotografo::create([
                 'id_usuario' => $user->id,
@@ -55,7 +55,7 @@ class CreateNewUser implements CreatesNewUsers
             // }
         }
 
-        if ($input['tipo'] == 'cliente') {
+        if ($input['tipo'] == 'Cliente') {
             $user = User::create([
                 'name' => $input['name'],
                 'apellido' => $input['apellido'],
@@ -63,11 +63,10 @@ class CreateNewUser implements CreatesNewUsers
                 'telefono' => $input['telefono'],
                 'ci' => $input['ci'],
                 'password' => Hash::make($input['password']),
-            ])->assignRole('cliente');
+            ])->assignRole('Cliente');
 
             Cliente::create([
                 'id_usuario' => $user->id,
-
             ]);
 
             
