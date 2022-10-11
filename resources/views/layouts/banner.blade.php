@@ -60,16 +60,14 @@
                             <a href="{{ route('fotografo.index') }}" class="nav-link "><i
                                     class="fa fa-laptop me-2"></i>Fotografos</a>
                         </div>
+                        <a href="{{ route('evento.index') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Mis
+                            Eventos</a>
                     @endrole
-                    <a href="{{ route('evento.index') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Mis
-                        Eventos</a>
+                    
                     @role('Fotografo')
                         <a href="{{ route('paqueteshow') }}" class="nav-item nav-link"><i
                                 class="bi bi-folder-fill me-2"></i>Mis Paquetes</a>
                     @endrole
-
-                    <a href="#" class="nav-item nav-link"><i class="bi bi-camera-fill me-2"></i>Catalogo
-                        Publicos</a>
 
                 </div>
             </nav>
